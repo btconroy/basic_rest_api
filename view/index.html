@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            background-color: #f5f5dc;
+        }
+        header {
+            width: 100%;
+            background-color: #778899;
+        }
+        h1 {
+            color: #b63636;
+            display: block;
+            padding: 35px;
+            margin: 0;
+        }
+        #btn-options {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            width: 100%;
+            height: auto;
+            padding: 0;
+            margin: 0;
+        }
+        #btn-options button {
+            all: unset;
+            border: 1px solid lightyellow;
+            background-color: #b63636;
+            color: white;
+            padding: 5px 8px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        #btn-options button:hover {
+            opacity: 0.6;
+            cursor: pointer;
+        }
+        #info-container {
+            border: 2px solid #b63636;
+            border-radius: 5px;
+            display: block;
+            width: 95vw;
+            height: 50vh;
+            margin: 35px auto;
+            background-color: #b636365d;
+        }
+    </style>
+    <title>Vanilla JS Panel</title>
+</head>
+<body>
+
+    <header>
+        <h1>Welcome to Vanilla JS Rest API</h1>
+    </header>
+
+    <main>
+
+        <section id="info-container">
+
+        </section>
+
+        <div id="btn-options">
+            <button type="button">Data 1</button>
+            <button type="button">Data 2</button>
+            <button type="button">Data 3</button>
+        </div>
+
+    </main>
+
+    <script src="/public/index.js"></script>
+</body>
+</html>

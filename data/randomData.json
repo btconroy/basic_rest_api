@@ -1,0 +1,17 @@
+[
+    {
+        "title" : "Car",
+        "image" : "/public/img/car.jpeg",
+        "description" : "A small red car."
+    },
+    {
+        "title" : "book",
+        "image" : "/public/img/book.jpeg",
+        "description" : "A basic book." 
+    },
+    {
+        "title" : "bell",
+        "image" : "/public/img/bell.png",
+        "description" : "A basic book." 
+    }
+]
