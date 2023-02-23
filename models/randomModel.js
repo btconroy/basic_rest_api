@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const mainDir = require('../utils/mainPath');
-const result = require('../utils/result');
+const dataFile = '/data/randomData.json';
 
 module.exports = class Random {
     constructor(title, image, desc) {
@@ -10,12 +10,24 @@ module.exports = class Random {
         this.description = desc;
     }
 
-    //@desc random item
-    //@route /api/items
+    //@desc finding all random item
+    //@route GET /api/items
     static allItems(cb, res) {
-       fs.readFile(path.join(mainDir, '/data/randomData.json'), 'utf8', (err, data) => {
+       fs.readFile(path.join(mainDir, dataFile), 'utf8', (err, items) => {
         if(err) throw console.log(err);
-        cb(data, res)
-    }) 
+        cb(items, res)
+    }); 
     }
+
+    //@desc finding a single random item
+    //@route GET /api/item/:id
+    static findItem(cb, res, id) {
+        fs.readFile(path.join(mainDir, dataFile), 'utf8', (err, items) => {
+            if(err) throw console.log(err);
+            const data = JSON.parse(items);
+            const returnedData = data.find(item => item.id === id);
+            cb(JSON.stringify(returnedData), res);
+        });
+    }
+
 }
