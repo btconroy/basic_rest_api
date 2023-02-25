@@ -9,7 +9,12 @@ function getItem(req, res, id) {
     Random.findItem(result, res, id);
 }
 
+function updateItem(req, res, id) {
+    Random.updateItem(result, res, req, id);
+}
+
 module.exports = {
     getAllData,
-    getItem
+    getItem,
+    updateItem
 }

@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const mainDir = require('./utils/mainPath');
 
-const { getAllData, getItem } = require('./controllers/dataController');
+const { getAllData, getItem, updateItem } = require('./controllers/dataController');
 
 const PORT = 4040 || process.env.PORT;
 
@@ -21,6 +21,9 @@ server.createServer((req, res) => {
     } else if(req.method === 'GET' && req.url.match(/\/api\/item\/\w+/)) {
         const id = req.url.split('/')[3];
         getItem(req, res, id);
+    } else if(req.method === 'PUT' && req.url.match(/\/api\/item\/\w+/)) {
+        const id = req.url.split('/')[3];
+        updateItem(req, res, id);
     }
      else {
         res.writeHead(404, {'Content-Type' : 'text/html'});
