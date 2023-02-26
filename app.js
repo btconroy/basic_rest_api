@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const mainDir = require('./utils/mainPath');
 
-const { getAllData, getItem, updateItem } = require('./controllers/dataController');
+const { getAllData, getItem, updateItem, getImageFile } = require('./controllers/dataController');
 
 const PORT = 4040 || process.env.PORT;
 
@@ -16,6 +16,11 @@ server.createServer((req, res) => {
         res.writeHead(200, {'Content-Type' : 'text/javascript'});
         res.write(fs.readFileSync(path.join(mainDir, '/public/index.js'), 'utf8'));
         res.end();
+    }  else if(req.method === 'GET' && req.url.match(/\/public\/img\/\w+/)) {
+        const imageFile = req.url.split('/')[3];
+        const imageFormat = imageFile.split('.')[1];  
+        getImageFile(req, res, imageFile, imageFormat);
+
     } else if(req.method === 'GET' && req.url === '/api/items') {
         getAllData(req, res);
     } else if(req.method === 'GET' && req.url.match(/\/api\/item\/\w+/)) {

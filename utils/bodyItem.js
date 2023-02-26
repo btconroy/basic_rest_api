@@ -7,12 +7,10 @@ function bodyPull(req) {
                   }).on('end', () => {
                     body = Buffer.concat(body).toString();
                     resolve(body)
-                  })
-                
+                  })               
             } catch(err) {
                 reject(err)
             }
         })
 }
-
 module.exports = bodyPull;
