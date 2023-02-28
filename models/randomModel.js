@@ -2,13 +2,43 @@ const fs = require('fs');
 const path = require('path');
 const mainDir = require('../utils/mainPath');
 const dataFile = '/data/randomData.json';
-const bodyPull = require('../utils/bodyItem');
+const { bodyPull }= require('../utils/bodyItem');
+const randomId = require('../utils/randomId');
 
 module.exports = class Random {
     constructor(title, image, desc) {
         this.title = title;
         this.image = image;
         this.description = desc;
+    }
+    //@desc adding a new random item
+    //@route POST /api/item/
+
+   static addNewItem(obj, cb, res) {
+        const fileObject = JSON.parse(fs.readFileSync(path.join(mainDir, dataFile), 'utf8'));
+        let newId = randomId();
+        let checkFile = fileObject.find(item => item.id === newId);
+
+     /*  while(checkFile != undefined) {
+        newId = randomId()
+        checkFile = fileObject.find(item => item.id === newId);
+       } */
+
+       const newItem = {
+            id : newId,
+            title : obj.title,
+            image : obj.image,
+            description: obj.description
+        } 
+        const fileUpdate = [...fileObject, newItem];
+
+        fs.writeFile(path.join(mainDir, dataFile), JSON.stringify(fileUpdate), (err) => {
+            if(err) throw console.log(err) 
+            
+            cb(fs.readFileSync(path.join(mainDir, '/data/randomData.json'), 'utf8'), res);
+        }) 
+       
+
     }
 
     //@desc finding all random item
@@ -62,10 +92,8 @@ module.exports = class Random {
                 cb(fs.readFileSync(path.join(mainDir, '/data/randomData.json'), 'utf8'), res);
             }
         });
-
-        
-
     }
+
 
 
 }

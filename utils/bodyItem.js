@@ -13,4 +13,6 @@ function bodyPull(req) {
             }
         })
 }
-module.exports = bodyPull;
+module.exports = {
+  bodyPull
+}
