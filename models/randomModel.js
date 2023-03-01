@@ -11,18 +11,12 @@ module.exports = class Random {
         this.image = image;
         this.description = desc;
     }
-    //@desc adding a new random item
+    //@desc adding a new item
     //@route POST /api/item/
 
    static addNewItem(obj, cb, res) {
         const fileObject = JSON.parse(fs.readFileSync(path.join(mainDir, dataFile), 'utf8'));
         let newId = randomId();
-        let checkFile = fileObject.find(item => item.id === newId);
-
-     /*  while(checkFile != undefined) {
-        newId = randomId()
-        checkFile = fileObject.find(item => item.id === newId);
-       } */
 
        const newItem = {
             id : newId,
@@ -36,12 +30,12 @@ module.exports = class Random {
             if(err) throw console.log(err) 
             
             cb(fs.readFileSync(path.join(mainDir, '/data/randomData.json'), 'utf8'), res);
-        }) 
+        }); 
        
 
     }
 
-    //@desc finding all random item
+    //@desc finding all items
     //@route GET /api/items
     static allItems(cb, res) {
        fs.readFile(path.join(mainDir, dataFile), 'utf8', (err, items) => {
@@ -50,7 +44,7 @@ module.exports = class Random {
     }); 
     }
 
-    //@desc finding a single random item
+    //@desc finding a single item
     //@route GET /api/item/:id
     static findItem(cb, res, id) {
         fs.readFile(path.join(mainDir, dataFile), 'utf8', (err, items) => {
@@ -66,11 +60,10 @@ module.exports = class Random {
             cb(JSON.stringify(returnedData), res);
         });
     }
-    //@desc update a random item
+    //@desc update a single item
     //@route PUT /api/item/:id
     static async updateItem(cb, res, req, id){
         const items = JSON.parse(fs.readFileSync(path.join(mainDir, '/data/randomData.json')));
-        // const findItem = items.find(item => {item.id === id});
         const requestedItem = await bodyPull(req);
         const reqObj = JSON.parse(requestedItem)
 
@@ -93,7 +86,19 @@ module.exports = class Random {
             }
         });
     }
+    //@desc delete a single item
+    //@route DELETE /api/item/:id
+    static removeItem(cb, res, id) {
+        const fileObject = JSON.parse(fs.readFileSync(path.join(mainDir, dataFile), 'utf8'));
+        const removedFile = fileObject.filter(item => item.id != id);
 
+        fs.writeFile(path.join(mainDir, dataFile), JSON.stringify(removedFile), (err) => {
+            if(err) throw console.log(err) 
+            
+            cb(fs.readFileSync(path.join(mainDir, '/data/randomData.json'), 'utf8'), res);
+        });
+
+    }
 
 
 }

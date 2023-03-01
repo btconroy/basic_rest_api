@@ -28,10 +28,15 @@ async function postNewItem(req, res) {
     
 }
 
+function deleteItem(req, res, id) {
+    Random.removeItem(result, res, id);
+}
+
 module.exports = {
     getAllData,
     getItem,
     updateItem,
     getImageFile,
-    postNewItem
+    postNewItem,
+    deleteItem
 }

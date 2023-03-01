@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const mainDir = require('./utils/mainPath');
 
-const { getAllData, getItem, updateItem, getImageFile, postNewItem } = require('./controllers/dataController');
+const { getAllData, getItem, updateItem, getImageFile, postNewItem, deleteItem } = require('./controllers/dataController');
 
 const PORT = 4040 || process.env.PORT;
 
@@ -37,7 +37,10 @@ server.createServer((req, res) => {
     }  else if(req.method === 'POST' && req.url === '/api/item/') {
         postNewItem(req, res);
 
-    }  else {
+    } else if(req.method === 'DELETE' && req.url.match(/\/api\/item\/\w+/)) {
+        const id = req.url.split('/')[3];
+        deleteItem(req, res, id);
+    } else {
         res.writeHead(404, {'Content-Type' : 'text/html'});
         res.write(fs.readFileSync(path.join(mainDir, '/view/error/404.html'), 'utf8'));
         res.end();
