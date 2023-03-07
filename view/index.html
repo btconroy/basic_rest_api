@@ -34,7 +34,7 @@
             width: 100%;
             height: auto;
             padding: 0;
-            margin: 0;
+            margin: 15px 0;
             border: 1px solid black;
         }
         #btn-options button {
@@ -121,6 +121,7 @@
     <main>
 
         <section class="container">
+
            <table class="table table-dark table-hover">
             <thead>
                 <tr>
@@ -131,15 +132,14 @@
                 </tr>
               </thead>
               <tbody id="info-body-container">
-               <!-- EXAMPLE: <tr>
+               <!-- EXAMPLE: <tr data-imageid="">
                   <th scope="row">1</th>
-                  <td><img class="item-image" src="https://si.vwr.com/stibo/low_res/std.lang.all/26/81/22662681.jpg" alt="toilet paper"></td>
+                  <td><img class="item-image" src="" alt=""></td>
                   <td>Toilet Paper</td>
                   <td>A hot commodity in the year 2020.</td>
                 </tr> -->
                
               </tbody>
- 
             </table>
 
         </section>
@@ -152,46 +152,51 @@
 
         <!-- Add Form -->
         <div class="option-form-add">
-        <form class="row g-3 col-md-6 form-content-container">
-            <div class="close" title="close">+</div>
-            <h2>Add New Item</h2>
-            <input id="item-id" type="text" value="" hidden>
-            <div class="mb-3">
-                <label for="title" class="form-label">Item Name</label>
-                <input type="text" class="form-control" id="title" placeholder="Enter Item Name">
-              </div>
-              <div class="mb-3">
-                <label for="description" class="form-label">Description</label>
-                <textarea type="text" class="form-control" id="description" placeholder="Enter A Description"></textarea>
-              </div>
-              <div class="mb-3">
-                <label for="image" class="form-label">Image</label>
-                <input type="text" class="form-control" id="Image" placeholder="Enter Image URL">
-              </div>
-              <button id="add-btn" class="btn btn-primary" type="button">Submit</button>
-        </form>
+
+            <form class="row g-3 col-md-6 form-content-container">
+                <div class="close" title="close">+</div>
+                <h2>Add New Item</h2>
+                <input id="item-id" type="text" value="" hidden>
+                <div class="mb-3">
+                    <label for="title" class="form-label">Item Name</label>
+                    <input type="text" class="form-control" id="title" placeholder="Enter Item Name">
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea type="text" class="form-control" id="description" placeholder="Enter A Description"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="form-label">Image</label>
+                    <input type="text" class="form-control" id="image" placeholder="Enter Image URL">
+                </div>
+                <button id="add-btn" class="btn btn-primary" type="button">Submit</button>
+            </form>
+
         </div>
         <!-- Update Form -->
+
         <div class="option-form-update">
-        <form class="row g-3 col-md-6 form-content-container">
-            <div class="close" title="close">+</div>
-            <h2>Update Item</h2>
-            <input id="item-id" type="text" value="" hidden>
-            <div class="mb-3">
-                <label for="title" class="form-label">Item Name</label>
-                <input type="text" class="form-control" id="title" placeholder="Enter Item Name">
-              </div>
-              <div class="mb-3">
-                <label for="description" class="form-label">Description</label>
-                <textarea type="text" class="form-control" id="description" placeholder="Enter A Description"></textarea>
-              </div>
-              <div class="mb-3">
-                <label for="image" class="form-label">Image</label>
-                <input type="text" class="form-control" id="Image" placeholder="Enter Image URL">
-              </div>
-              <button id="update-btn" class="btn btn-primary" type="button">Submit</button>
-        </form>
+            <form class="row g-3 col-md-6 form-content-container">
+                <div class="close" title="close">+</div>
+                <h2>Update Item</h2>
+                <input id="updated-id" type="text" value="" hidden>
+                <div class="mb-3">
+                    <label for="updated-title" class="form-label">Item Name</label>
+                    <input type="text" class="form-control" id="updated-title" placeholder="Enter Item Name">
+                </div>
+                <div class="mb-3">
+                    <label for="updated-description" class="form-label">Description</label>
+                    <textarea type="text" class="form-control" id="updated-description" placeholder="Enter A Description"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="updated-image" class="form-label">Image</label>
+                    <input type="text" class="form-control" id="updated-image" placeholder="Enter Image URL">
+                </div>
+                <button id="update-btn" class="btn btn-primary" type="button">Submit</button>
+            </form>
+
         </div>
+
     </main>
 
     

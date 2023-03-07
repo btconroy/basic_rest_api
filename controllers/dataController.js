@@ -23,7 +23,6 @@ async function postNewItem(req, res) {
     const newItem = await bodyPull(req);
     const parsedItem = JSON.parse(newItem);
     const addItem = new Random(parsedItem.title, parsedItem.image, parsedItem.description);
-    console.log(addItem)
     Random.addNewItem(addItem, result, res);
     
 }
