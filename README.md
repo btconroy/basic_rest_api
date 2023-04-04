@@ -5,9 +5,7 @@ A simple rest api with a single page for the front end that uses vanilla JS.
 - Bootstrap version 5.0
 
 ## Why would anyone do this?
-Well, to put it simply, I feel it best to know how far I can go with what I know and learn how to make better choices when coding. Using JS without any libraries is the best way to do this. 
-
-Plus, in the years that I have been programming, I've never went this length to know my limitations. And, clearly, this project has demonstrated where I need to perfect my coding skills. 
+Well, to put it simply, some people like chocolate, others like vanilla. Using JS without any libraries is the best way to do this. Plus, I like vanilla... JavaScript. 
 
 ## Note:
-This is a basic REST API, which means I am only going as far as making it a CRUD application. No more, no less.
+This is a basic REST API, which means it's a CRUD application. No more, no less.
